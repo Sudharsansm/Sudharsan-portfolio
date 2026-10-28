@@ -10,7 +10,7 @@ export const SITE = {
   description:
     'Sudharsan SM — AI/ML Engineer and Python Developer building intelligent applications with Generative AI, FastAPI, machine learning and agentic AI.',
   // Absolute origin of the deployed site, without a trailing slash. Used for canonical + social tags.
-  url: (env.VITE_SITE_URL || '').replace(/\/+$/, ''),
+  url: (env.VITE_SITE_URL || '').trim().replace(/^["']+|["']+$/g, '').replace(/\/+$/, ''),
   email: 'sudharsanmani423@gmail.com',
   linkedin: 'https://www.linkedin.com/in/sudharsansm',
   github: 'https://github.com/sudharsansm',
