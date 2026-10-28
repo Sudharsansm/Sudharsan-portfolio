@@ -1,0 +1,13 @@
+{
+  "name": "Sudharsan SM — AI/ML Engineer & Python Developer",
+  "short_name": "Sudharsan",
+  "description": "Portfolio of Sudharsan SM, AI/ML Engineer and Python Developer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#FF6B2B",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

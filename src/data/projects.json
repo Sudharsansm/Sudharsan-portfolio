@@ -1,0 +1,637 @@
+{
+  "filterOptions": [
+    {
+      "value": "all",
+      "label": "All"
+    },
+    {
+      "value": "web-app",
+      "label": "Web App"
+    },
+    {
+      "value": "developer-tool",
+      "label": "Developer Tool"
+    },
+    {
+      "value": "ecommerce",
+      "label": "E-commerce"
+    }
+  ],
+
+  "projects": [
+    {
+      "id": 1,
+      "slug": "inbits",
+      "title": "InBits — News Discovery PWA",
+      "category": "web-app",
+      "categoryLabel": "Web App",
+      "tags": ["React", "TypeScript", "Python", "PWA", "News Aggregation"],
+      "year": "2026",
+      "desc": "A mobile-first news discovery platform that brings news into a clean, feed-based reading experience with article views, personalization preferences, and installable PWA functionality.",
+      "img": "/images/inbits-promo.webp",
+      "liveUrl": "https://inbits.vercel.app/",
+      "githubUrl": "https://github.com/Sudharsansm/inbits-frontend",
+      "featured": true,
+      "caseStudy": {
+        "duration": "2026 · Ongoing",
+        "heroImg": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1400&q=80",
+        "meta": {
+          "client": "Independent project",
+          "role": "Full-Stack Developer",
+          "timeline": "2026 · Ongoing",
+          "deliverables": "React, TypeScript, Python backend, PWA"
+        },
+        "stats": [
+          {
+            "value": "PWA",
+            "label": "Mobile-first experience",
+            "accent": false
+          },
+          {
+            "value": "Full-stack",
+            "label": "Frontend + backend",
+            "accent": true
+          },
+          {
+            "value": "Multi-source",
+            "label": "News discovery concept",
+            "accent": false
+          },
+          {
+            "value": "Live",
+            "label": "Deployed web application",
+            "accent": false
+          }
+        ],
+        "brief": [
+          "InBits is a mobile-first news aggregation and discovery application designed to make following current events feel simple and convenient. Instead of sending readers through multiple traditional news websites, the product presents news in a modern, feed-based interface with dedicated article views.",
+          "The project focuses on combining a responsive frontend with a Python-based news collection backend. The intended experience emphasizes quick reading, content discovery, mobile usability, and an installable Progressive Web App."
+        ],
+        "briefQuote": "Make news easier to discover and quicker to read through a familiar, mobile-first feed experience.",
+        "research": {
+          "interviewsIntro": "The product direction is based on common news-reading and mobile usability needs. Formal user interviews, usability studies, and quantified product analytics have not been provided for this case study.",
+          "interviewFindings": [
+            "Readers benefit from a clear feed that makes headlines easy to scan.",
+            "Dedicated article views help separate browsing from focused reading.",
+            "Mobile-friendly navigation and installability can make repeat access more convenient.",
+            "News collection and display need reliable loading, source attribution, and error handling."
+          ],
+          "heuristicAudit": "Potential UX review areas include feed loading and retry states, duplicate-story handling, article-source attribution, accessibility, responsive layouts, and the clarity of personalization and privacy controls.",
+          "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+          "imgCaption": "Illustrative visual for the product research and improvement phase; not a screenshot of the live InBits interface."
+        },
+        "strategyIntro": "The product experience is organized around three principles:",
+        "principles": [
+          {
+            "icon": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Fast, focused reading",
+            "desc": "Present the main story clearly and reduce friction between discovering a headline and understanding its key points."
+          },
+          {
+            "icon": "M3 3h18v18H3z",
+            "title": "Feed-first navigation",
+            "desc": "Use familiar feed patterns and dedicated article routes so readers can browse and return to content naturally."
+          },
+          {
+            "icon": "M12 2v20M2 12h20",
+            "title": "Mobile-first access",
+            "desc": "Build responsive layouts and PWA installation support to make the experience convenient on mobile devices."
+          }
+        ],
+        "processIntro": {
+          "heading": "Product structure · Frontend and backend",
+          "body": "The application is split into a frontend repository and a backend repository. The frontend uses React and TypeScript with TanStack Router and reusable feed components. The Python backend contains news-spider functionality intended to collect and process news for the application. Deployment and production behavior should be validated against the current repositories."
+        },
+        "steps": [
+          {
+            "n": 1,
+            "title": "Feed and navigation structure",
+            "desc": "Developed a feed-based interface and dedicated article routes, with attention to navigation continuity and reading flow."
+          },
+          {
+            "n": 2,
+            "title": "Reusable frontend components",
+            "desc": "Structured the UI around components and hooks for the app shell, post cards, live feed, interest profile, pull-to-refresh, and sharing."
+          },
+          {
+            "n": 3,
+            "title": "News collection backend",
+            "desc": "Built a Python backend with a news spider as part of the content collection and processing workflow."
+          },
+          {
+            "n": 4,
+            "title": "PWA and user preferences",
+            "desc": "Worked on install prompts, theme preferences, mobile interactions, and a more app-like browsing experience."
+          },
+          {
+            "n": 5,
+            "title": "Deployment and troubleshooting",
+            "desc": "Deployed the frontend to Vercel and worked through production-versus-local behavior and integration issues."
+          }
+        ],
+        "processImg": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+        "processImgCaption": "Illustrative product-development visual; replace with genuine InBits screenshots for a production portfolio case study.",
+        "beforeAfter": [
+          {
+            "img": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80",
+            "caption": "Development focus — bringing content collection and the reading interface together."
+          },
+          {
+            "img": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=80",
+            "caption": "Product direction — a feed-first news discovery experience."
+          }
+        ],
+        "decisions": [
+          {
+            "title": "Feed-based discovery",
+            "body": "The product uses a familiar feed pattern to help readers scan headlines and move into individual stories. This keeps discovery and focused reading as distinct parts of the experience."
+          },
+          {
+            "title": "Separate frontend and backend",
+            "body": "Keeping the React/TypeScript frontend and Python backend in separate repositories supports clearer responsibilities and independent development. The integration depends on reliable API contracts, content normalization, and production configuration."
+          },
+          {
+            "title": "PWA-oriented mobile experience",
+            "body": "Install prompts, responsive layouts, and mobile interactions are intended to make InBits feel closer to an app while remaining accessible through the web. Installation behavior should be tested across supported browsers and devices."
+          }
+        ],
+        "resultsIntro": "InBits is deployed as a live web application. No verified analytics, controlled usability-test results, or business-performance metrics were supplied, so this case study describes the implementation and product direction without claiming measured outcomes.",
+        "results": [
+          "Live frontend: https://inbits.vercel.app/",
+          "Frontend repository: https://github.com/Sudharsansm/inbits-frontend",
+          "Backend repository: https://github.com/Sudharsansm/inbits-backend",
+          "Frontend stack includes React, TypeScript, and TanStack Router.",
+          "Backend includes Python news-spider functionality.",
+          "Quantified impact such as user growth, reading time, reliability, and retention remains to be measured."
+        ],
+        "resultsQuote": "The next step is to validate the experience with real readers and track feed reliability, article engagement, and repeat usage.",
+        "reflections": [
+          "InBits brings together interface design, frontend engineering, backend content collection, and deployment in one product. The project highlights the importance of treating the news feed as an end-to-end system rather than only a UI.",
+          "The next improvement phase should prioritize reliable content ingestion, duplicate detection, clear publisher attribution, robust loading and retry states, accessibility, and real-user analytics. Genuine product screenshots and measured outcomes would make the portfolio case study stronger."
+        ]
+      }
+    },
+
+    {
+      "id": 2,
+      "slug": "bitscrape",
+      "title": "Bitscrape — Asynchronous Python Web Scraping Framework",
+      "category": "developer-tool",
+      "categoryLabel": "Developer Tool",
+      "tags": [
+        "Python",
+        "AsyncIO",
+        "aiohttp",
+        "Playwright",
+        "Pydantic",
+        "Web Scraping",
+        "Browser Automation",
+        "Open Source"
+      ],
+      "year": "2026",
+      "desc": "An open-source Python web scraping framework designed to simplify asynchronous crawling, browser automation, and structured data extraction through reusable scraping components and flexible workflows.",
+      "img": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&q=80",
+      "liveUrl": "https://bitscrape.vercel.app/",
+      "githubUrl": "https://github.com/Sudharsansm/Bitscrape",
+      "featured": true,
+      "caseStudy": {
+        "duration": "2026 · Ongoing",
+        "heroImg": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80",
+        "meta": {
+          "client": "Independent open-source project",
+          "role": "Creator & Python Developer",
+          "timeline": "2026 · Ongoing",
+          "deliverables": "Python framework, asynchronous crawling, browser automation, structured extraction"
+        },
+        "stats": [
+          {
+            "value": "Python",
+            "label": "Core programming language",
+            "accent": false
+          },
+          {
+            "value": "Async",
+            "label": "Concurrent scraping workflows",
+            "accent": true
+          },
+          {
+            "value": "Open Source",
+            "label": "Public GitHub repository",
+            "accent": false
+          },
+          {
+            "value": "Live",
+            "label": "Project website deployed",
+            "accent": false
+          }
+        ],
+        "brief": [
+          "Bitscrape is an open-source Python web scraping framework created to make website crawling and data extraction more organized, reusable, and developer-friendly. It is designed to bring essential scraping capabilities into a structured framework rather than requiring developers to maintain separate scripts for every collection task.",
+          "The project focuses on asynchronous web requests, reusable spider-based workflows, browser automation for dynamic pages, and structured data processing. It is intended to provide a foundation for developers building data collection tools, research pipelines, content aggregation systems, and applications that depend on information from permitted web sources."
+        ],
+        "briefQuote": "Make web data collection more efficient, reusable, and accessible through a developer-friendly Python framework.",
+        "research": {
+          "interviewsIntro": "The product direction is informed by common challenges encountered when developing web scrapers. Formal user interviews, quantified user research, and controlled usability studies have not been provided for this case study.",
+          "interviewFindings": [
+            "Standalone scraping scripts can become difficult to maintain as websites and extraction requirements grow.",
+            "Sequential network requests can introduce unnecessary waiting time when collecting data from multiple pages.",
+            "JavaScript-rendered websites may require browser automation instead of ordinary HTTP requests.",
+            "Reusable components and consistent extraction workflows can simplify the development of multiple scraping projects.",
+            "Scraping systems need appropriate error handling, rate limits, and responsible access policies."
+          ],
+          "heuristicAudit": "Potential improvement areas include clearer setup documentation, consistent spider interfaces, actionable error messages, retry policies, extraction validation, browser lifecycle management, observability, and integration testing. Performance benchmarks and feature coverage should be validated against the current implementation.",
+          "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+          "imgCaption": "Illustrative visual for scraping workflows and data processing; not a screenshot of the Bitscrape interface."
+        },
+        "strategyIntro": "The framework is organized around three core engineering principles:",
+        "principles": [
+          {
+            "icon": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Asynchronous execution",
+            "desc": "Use asynchronous networking to manage concurrent I/O operations and reduce unnecessary waiting during multi-page crawling."
+          },
+          {
+            "icon": "M12 3v18M3 12h18",
+            "title": "Reusable scraping workflows",
+            "desc": "Organize website-specific extraction logic into reusable components that are easier to develop, configure, and maintain."
+          },
+          {
+            "icon": "M4 4h16v16H4z",
+            "title": "Flexible page handling",
+            "desc": "Combine HTTP-based collection with browser automation when website rendering or interaction requires it."
+          }
+        ],
+        "processIntro": {
+          "heading": "Framework architecture · Crawling and extraction",
+          "body": "Bitscrape is a Python-based framework that uses asynchronous networking and browser automation technologies. Its project dependencies include aiohttp, Pydantic, and Playwright. The intended workflow is to configure a spider, retrieve target pages, process their content, and make extracted data available to downstream applications. Exact capabilities and supported interfaces should be verified against the current repository and package version."
+        },
+        "steps": [
+          {
+            "n": 1,
+            "title": "Framework design",
+            "desc": "Designed a reusable Python scraping framework to organize website crawling and extraction tasks instead of relying entirely on isolated scripts."
+          },
+          {
+            "n": 2,
+            "title": "Asynchronous crawling",
+            "desc": "Used asynchronous networking concepts and aiohttp to support I/O-oriented scraping workflows that can handle concurrent requests."
+          },
+          {
+            "n": 3,
+            "title": "Spider-based workflows",
+            "desc": "Structured scraping logic around reusable spider and engine concepts, allowing website-specific crawling behavior to be organized into maintainable components."
+          },
+          {
+            "n": 4,
+            "title": "Dynamic page handling",
+            "desc": "Integrated Playwright-based browser automation into the framework's technology stack to support scraping scenarios involving JavaScript-rendered pages and browser interactions."
+          },
+          {
+            "n": 5,
+            "title": "Packaging and distribution",
+            "desc": "Prepared the project as a Python package and maintained a public GitHub repository and project website to make the framework accessible to developers."
+          }
+        ],
+        "processImg": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+        "processImgCaption": "Illustrative development visual representing data collection and processing; replace with an actual architecture diagram or terminal screenshot for a production portfolio.",
+        "beforeAfter": [
+          {
+            "img": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80",
+            "caption": "Traditional approach — individual scraping scripts with repeated networking and extraction logic."
+          },
+          {
+            "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80",
+            "caption": "Framework approach — reusable components for organizing crawling and data extraction workflows."
+          }
+        ],
+        "decisions": [
+          {
+            "title": "Asynchronous networking",
+            "body": "Web scraping frequently involves waiting for remote servers to respond. An asynchronous approach can allow multiple I/O operations to progress concurrently, improving resource utilization for suitable workloads. Actual performance depends on the target website, network conditions, concurrency limits, and implementation."
+          },
+          {
+            "title": "HTTP requests and browser automation",
+            "body": "Not every website requires a full browser. HTTP-based requests are often simpler and more resource-efficient, while browser automation can help with JavaScript-rendered content and interactive pages. Supporting both approaches provides flexibility for different scraping requirements."
+          },
+          {
+            "title": "Reusable framework architecture",
+            "body": "A framework-based approach helps separate crawling behavior, page processing, and extraction logic. Reusable components can reduce duplicated code and make projects easier to extend. Clear interfaces, robust error handling, and comprehensive tests remain important for long-term maintainability."
+          },
+          {
+            "title": "Python package distribution",
+            "body": "Packaging Bitscrape for Python makes it easier for developers to incorporate the framework into their own environments. Version management, dependency compatibility, installation documentation, and reliable release automation are important parts of maintaining a usable open-source developer tool."
+          },
+          {
+            "title": "Responsible web data collection",
+            "body": "The framework should be used with appropriate concurrency limits and respect for applicable laws, website terms, access controls, and privacy requirements. Robust scraping also requires handling failures gracefully and avoiding unnecessary requests to target servers."
+          }
+        ],
+        "resultsIntro": "Bitscrape has a public project website and GitHub repository. This case study describes its technical direction and implementation focus without claiming unverified performance improvements, adoption figures, or production benchmarks.",
+        "results": [
+          "Live project website: https://bitscrape.vercel.app/",
+          "GitHub repository: https://github.com/Sudharsansm/Bitscrape",
+          "Python package: https://pypi.org/project/bitscrape/",
+          "Core technology stack includes Python, aiohttp, Pydantic, and Playwright.",
+          "Framework direction focuses on asynchronous crawling, reusable spiders, and browser automation.",
+          "Potential applications include research data collection, content aggregation, analytics pipelines, and preparing permitted web content for downstream AI systems.",
+          "Verified throughput, memory usage, extraction accuracy, test coverage, and adoption metrics remain to be measured."
+        ],
+        "resultsQuote": "The next step is to strengthen reliability, publish reproducible benchmarks, and make it even easier for developers to build and maintain scraping workflows.",
+        "reflections": [
+          "Bitscrape explores how asynchronous programming and reusable framework design can simplify Python web scraping. Building a developer tool requires more than making requests to websites; it also involves API design, dependency management, browser lifecycle handling, error recovery, documentation, and packaging.",
+          "The next improvement phase should prioritize reliable crawling, predictable spider interfaces, improved extraction validation, comprehensive automated tests, and reproducible performance benchmarks. Real usage examples and genuine screenshots would also help developers understand the framework more quickly.",
+          "Bitscrape can also serve as a data collection component in larger AI and software engineering systems. Collected content can be cleaned, indexed, and passed to separate search, analytics, or retrieval-augmented generation systems. These AI capabilities are integrations built on top of the framework rather than inherent scraping functionality."
+        ]
+      }
+    },
+
+    {
+      "id": 3,
+      "slug": "dune-fashions",
+      "title": "Dune Fashions — AI-Powered Fashion E-Commerce",
+      "category": "ecommerce",
+      "categoryLabel": "E-commerce",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "AI",
+        "Virtual Try-On",
+        "MongoDB",
+        "Cloudinary",
+        "Clerk",
+        "Razorpay",
+        "E-Commerce"
+      ],
+      "year": "2026",
+      "desc": "A fashion e-commerce experience focused on premium visual design, product discovery, and AI-powered virtual try-on, with a modern web architecture for online fashion shopping.",
+      "img": "/images/dune-fashions.webp",
+      "liveUrl": "https://www.dunefashions.in/",
+      "githubUrl": "https://github.com/Sudharsansm/DuneFashion_shop",
+      "featured": true,
+      "caseStudy": {
+        "duration": "2026 · Ongoing",
+        "heroImg": "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1400&q=80",
+        "meta": {
+          "client": "Independent project",
+          "role": "Full-Stack Developer",
+          "timeline": "2026 · Ongoing",
+          "deliverables": "E-commerce frontend, product experience, AI virtual try-on concept, backend integrations"
+        },
+        "stats": [
+          {
+            "value": "AI",
+            "label": "Virtual try-on direction",
+            "accent": true
+          },
+          {
+            "value": "Full-stack",
+            "label": "Frontend and backend",
+            "accent": false
+          },
+          {
+            "value": "E-commerce",
+            "label": "Online fashion shopping",
+            "accent": false
+          },
+          {
+            "value": "Live",
+            "label": "Project website",
+            "accent": false
+          }
+        ],
+        "brief": [
+          "Dune Fashions is a fashion e-commerce project centered on creating a polished online shopping experience. The product direction combines premium visual presentation with a convenient way to discover fashion products and explore styles through a modern web interface.",
+          "The technical direction includes a Next.js-based frontend, authentication, product image management, database integration, payment integration, and AI-powered virtual try-on capabilities. These technologies are intended to support an experience that brings fashion discovery and interactive shopping together."
+        ],
+        "briefQuote": "Bring fashion discovery, premium design, and AI-powered shopping experiences together in one modern platform.",
+        "research": {
+          "interviewsIntro": "The design direction focuses on common online fashion shopping needs. Formal customer interviews, usability studies, and quantified conversion analytics have not been provided for this case study.",
+          "interviewFindings": [
+            "Fashion shoppers benefit from clear product photography and easy product discovery.",
+            "Product details and size information help customers make more informed purchasing decisions.",
+            "A consistent mobile shopping experience is important for browsing and evaluating products.",
+            "Virtual try-on technology can help shoppers visualize how selected styles may look on them.",
+            "Authentication, image delivery, and payment flows require reliable integration and clear user feedback."
+          ],
+          "heuristicAudit": "Potential UX review areas include product discovery, category navigation, product image quality, mobile responsiveness, size and fit guidance, cart interactions, authentication states, checkout usability, payment failure recovery, and the clarity of AI-generated try-on results.",
+          "img": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=80",
+          "imgCaption": "Illustrative fashion-shopping research visual; not a screenshot of the live Dune Fashions interface."
+        },
+        "strategyIntro": "The product direction is guided by three principles:",
+        "principles": [
+          {
+            "icon": "M3 3h18v18H3z",
+            "title": "Premium shopping experience",
+            "desc": "Use thoughtful visual hierarchy, product imagery, and a consistent design system to make fashion discovery feel polished and intuitive."
+          },
+          {
+            "icon": "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20",
+            "title": "AI-assisted visualization",
+            "desc": "Explore virtual try-on functionality to help shoppers visualize selected fashion items while communicating the limitations of generated previews."
+          },
+          {
+            "icon": "M5 12h14M12 5l7 7-7 7",
+            "title": "Frictionless shopping",
+            "desc": "Organize product browsing, account access, cart interactions, and checkout into a clear flow across desktop and mobile devices."
+          }
+        ],
+        "processIntro": {
+          "heading": "Product architecture · Commerce and AI",
+          "body": "The planned technical stack includes Next.js and TypeScript for the web application, Clerk for authentication, MongoDB for application data, Cloudinary for image management, and Razorpay for payment integration. AI-powered virtual try-on is an additional product capability. The precise implementation and availability of each feature should be validated against the deployed website and current source code."
+        },
+        "steps": [
+          {
+            "n": 1,
+            "title": "Brand and interface design",
+            "desc": "Define a premium visual direction with clear product presentation, consistent typography, considered spacing, and responsive layouts."
+          },
+          {
+            "n": 2,
+            "title": "Product discovery",
+            "desc": "Structure the shopping experience around product listings, product details, fashion imagery, and straightforward browsing interactions."
+          },
+          {
+            "n": 3,
+            "title": "Full-stack architecture",
+            "desc": "Use a modern web application architecture with database, authentication, and media-management integrations to support commerce workflows."
+          },
+          {
+            "n": 4,
+            "title": "AI virtual try-on",
+            "desc": "Develop the virtual try-on experience as an AI-assisted visualization workflow, subject to image-processing requirements, model capabilities, and integration availability."
+          },
+          {
+            "n": 5,
+            "title": "Checkout and deployment",
+            "desc": "Integrate the intended shopping and payment workflows, then validate responsive behavior, error states, security, and production configuration."
+          }
+        ],
+        "processImg": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80",
+        "processImgCaption": "Illustrative fashion product visual; replace with genuine Dune Fashions screenshots showing the homepage, product details, and shopping flow.",
+        "beforeAfter": [
+          {
+            "img": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700&q=80",
+            "caption": "Shopping challenge — evaluating fashion products through online images alone."
+          },
+          {
+            "img": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=80",
+            "caption": "Product direction — combining visual product discovery with an interactive digital shopping experience."
+          }
+        ],
+        "decisions": [
+          {
+            "title": "Next.js and TypeScript",
+            "body": "A modern React-based framework and TypeScript provide a structured foundation for reusable UI components, typed application logic, and maintainable commerce experiences."
+          },
+          {
+            "title": "Dedicated authentication and data layers",
+            "body": "Clerk and MongoDB are intended to separate identity management from application data. Authentication, authorization, input validation, and secure data access must be implemented and tested appropriately."
+          },
+          {
+            "title": "Cloud-based product imagery",
+            "body": "Cloudinary can support image delivery and media transformations, which are particularly useful for visually rich fashion catalogues. Image sizing, optimization, and loading behavior should be validated on mobile devices."
+          },
+          {
+            "title": "Payment integration",
+            "body": "Razorpay can provide payment processing for supported commerce workflows. Production checkout requires server-side payment verification, secure order handling, and appropriate recovery from failed or interrupted payments."
+          },
+          {
+            "title": "AI-powered virtual try-on",
+            "body": "Virtual try-on can make fashion discovery more interactive by generating a preview of a selected garment on a user-provided image. The feature needs careful image handling, privacy safeguards, realistic expectations, and testing across different garments and image conditions. Generated previews should not be presented as guarantees of actual fit."
+          }
+        ],
+        "resultsIntro": "Dune Fashions has a live project URL. The case study describes the intended product experience and technical direction without claiming unverified functionality, customer adoption, sales performance, or AI accuracy.",
+        "results": [
+          "Live website: https://www.dunefashions.in/",
+          "Project category: Fashion e-commerce web application.",
+          "Technical direction includes Next.js, TypeScript, Clerk, MongoDB, Cloudinary, and Razorpay.",
+          "AI-powered virtual try-on is part of the product concept and should be documented according to its verified implementation status.",
+          "Production validation should cover mobile responsiveness, product discovery, authentication, checkout, and error handling.",
+          "Verified user counts, conversion rates, performance benchmarks, and virtual try-on accuracy remain to be measured.",
+          "GitHub repository: Add the public repository URL if available."
+        ],
+        "resultsQuote": "The goal is to make online fashion shopping more visual, convenient, and interactive while maintaining trust throughout the customer journey.",
+        "reflections": [
+          "Dune Fashions brings together fashion-oriented interface design, full-stack web development, commerce integrations, and an AI-assisted shopping concept. The project highlights the importance of coordinating visual presentation with reliable application behavior.",
+          "The next improvement phase should prioritize real product screenshots, accessible and responsive product pages, secure checkout validation, image optimization, and end-to-end testing. If virtual try-on is implemented, its image-processing workflow and privacy behavior should also be documented clearly.",
+          "A strong next step is to measure product discovery success, cart completion, checkout reliability, and user feedback. These metrics would help distinguish the intended product experience from verified real-world outcomes."
+        ]
+      }
+    },
+
+    {
+      "id": 4,
+      "slug": "swify",
+      "title": "Swify",
+      "category": "web-app",
+      "categoryLabel": "Web App",
+      "tags": ["Web Development", "UI/UX", "Responsive Design"],
+      "year": "2026",
+      "desc": "A modern web application designed to deliver a clean, intuitive, and responsive user experience.",
+      "img": "/images/swify.webp",
+      "liveUrl": "https://swify.vercel.app/",
+      "githubUrl": "https://github.com/Sudharsansm/swify-app",
+      "featured": false,
+      "caseStudy": {
+        "duration": "2026",
+        "heroImg": "/images/swify.webp",
+        "meta": {
+          "client": "Independent project",
+          "role": "Developer",
+          "timeline": "2026",
+          "deliverables": "Responsive web application and user interface"
+        },
+        "stats": [
+          {
+            "value": "Responsive",
+            "label": "Design",
+            "accent": false
+          },
+          {
+            "value": "Modern",
+            "label": "Interface",
+            "accent": true
+          },
+          {
+            "value": "Web",
+            "label": "Platform",
+            "accent": false
+          }
+        ],
+        "brief": [
+          "Swify is a web project focused on creating an accessible, modern, and user-friendly digital experience. It emphasizes clear navigation, responsive layouts, and a streamlined interface."
+        ],
+        "briefQuote": "A clean, intuitive, and responsive digital experience.",
+        "research": {
+          "interviewsIntro": "The project focuses on usability, visual consistency, and adapting the interface to different screen sizes.",
+          "interviewFindings": [
+            "Clear navigation helps users find content more easily.",
+            "Consistent interface elements create a more predictable user experience.",
+            "Responsive layouts help the application adapt to desktop, tablet, and mobile screens."
+          ],
+          "heuristicAudit": "Key design considerations include readability, accessible navigation, consistent spacing, and responsive behavior."
+        },
+        "strategyIntro": "The design approach focuses on three principles:",
+        "principles": [
+          {
+            "icon": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Simple navigation",
+            "desc": "Keep navigation clear and make important content easy to discover."
+          },
+          {
+            "icon": "M3 3h18v18H3z",
+            "title": "Consistent interface",
+            "desc": "Use organized content, reusable components, and a consistent visual language."
+          },
+          {
+            "icon": "M12 2v20M2 12h20",
+            "title": "Responsive design",
+            "desc": "Adapt the layout to different devices and screen sizes."
+          }
+        ],
+        "processIntro": {
+          "heading": "Design and development",
+          "body": "The project follows a straightforward approach to interface design, responsive development, and deployment. The implementation should be evaluated against the current application."
+        },
+        "steps": [
+          {
+            "n": 1,
+            "title": "Interface Design",
+            "desc": "Developed a clear layout with a focus on readability, navigation, and visual consistency."
+          },
+          {
+            "n": 2,
+            "title": "Responsive Development",
+            "desc": "Focused on making the application usable across desktop, tablet, and mobile screen sizes."
+          },
+          {
+            "n": 3,
+            "title": "Deployment",
+            "desc": "Published the application on Vercel for online access."
+          }
+        ],
+        "decisions": [
+          {
+            "title": "Simplicity",
+            "body": "Prioritized a clean interface to help users navigate the application easily."
+          },
+          {
+            "title": "Responsive Layout",
+            "body": "Designed the experience to adapt to different devices."
+          }
+        ],
+        "resultsIntro": "Swify is available online as a deployed web project.",
+        "results": [
+          "Live website: https://swify.vercel.app/",
+          "GitHub repository: https://github.com/Sudharsansm/swify-app",
+          "Project focus: responsive interface design and user experience."
+        ],
+        "resultsQuote": "A straightforward web experience built around usability and responsive design.",
+        "reflections": [
+          "This project provided an opportunity to focus on interface development, responsive design, and deployment.",
+          "Future improvements can be guided by accessibility checks, responsive testing, and feedback from real users."
+        ]
+      }
+    }
+  ]
+}

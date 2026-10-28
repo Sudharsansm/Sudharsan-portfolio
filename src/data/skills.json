@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "delay": "d1",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    "name": "Python",
+    "role": "Programming Languages"
+  },
+  {
+    "id": 2,
+    "delay": "d2",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    "name": "JavaScript",
+    "role": "Programming Languages"
+  },
+  {
+    "id": 3,
+    "delay": "d3",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    "name": "SQL",
+    "role": "Programming Languages"
+  },
+
+  {
+    "id": 4,
+    "delay": "d1",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    "name": "HTML5",
+    "role": "Frontend Development"
+  },
+  {
+    "id": 5,
+    "delay": "d2",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    "name": "CSS3",
+    "role": "Frontend Development"
+  },
+  {
+    "id": 6,
+    "delay": "d3",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    "name": "React.js",
+    "role": "Frontend Development"
+  },
+  {
+    "id": 7,
+    "delay": "d1",
+    "dark": true,
+    "avatar": "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
+    "name": "Tailwind CSS",
+    "role": "Frontend Development"
+  },
+  {
+    "id": 8,
+    "delay": "d2",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+    "name": "Bootstrap",
+    "role": "Frontend Development"
+  },
+
+  {
+    "id": 9,
+    "delay": "d1",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+    "name": "FastAPI",
+    "role": "Backend Development"
+  },
+  {
+    "id": 10,
+    "delay": "d2",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    "name": "Node.js",
+    "role": "Backend Development"
+  },
+  {
+    "id": 11,
+    "delay": "d3",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    "name": "Express.js",
+    "role": "Backend Development"
+  },
+  {
+    "id": 12,
+    "delay": "d1",
+    "dark": false,
+    "avatar": "https://raw.githubusercontent.com/pydantic/pydantic/main/docs/logo-white.svg",
+    "name": "Pydantic",
+    "role": "Backend Development"
+  },
+
+  {
+    "id": 13,
+    "delay": "d1",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+    "name": "TensorFlow",
+    "role": "AI & Machine Learning"
+  },
+  {
+    "id": 14,
+    "delay": "d2",
+    "dark": false,
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
+    "name": "Scikit-learn",
+    "role": "AI & Machine Learning"
+  },
+  {
+    "id": 15,
+    "delay": "d3",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg",
+    "name": "NumPy",
+    "role": "AI & Machine Learning"
+  },
+  {
+    "id": 16,
+    "delay": "d1",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg",
+    "name": "Pandas",
+    "role": "AI & Machine Learning"
+  },
+  {
+    "id": 17,
+    "delay": "d2",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg",
+    "name": "Matplotlib",
+    "role": "Data Visualization"
+  },
+  {
+    "id": 18,
+    "delay": "d3",
+    "dark": false,
+    "avatar": "https://seaborn.pydata.org/_static/logo-wide-lightbg.svg",
+    "name": "Seaborn",
+    "role": "Data Visualization"
+  },
+
+  {
+    "id": 19,
+    "delay": "d1",
+    "dark": true,
+    "avatar": "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+    "name": "Hugging Face",
+    "role": "Generative AI"
+  },
+  {
+    "id": 20,
+    "delay": "d2",
+    "dark": false,
+    "avatar": "https://avatars.githubusercontent.com/u/126733545?s=200&v=4",
+    "name": "LangChain",
+    "role": "LLM Frameworks"
+  },
+  {
+    "id": 21,
+    "delay": "d3",
+    "dark": true,
+    "avatar": "https://avatars.githubusercontent.com/u/153381550?s=200&v=4",
+    "name": "LangGraph",
+    "role": "LLM Frameworks"
+  },
+  {
+    "id": 22,
+    "delay": "d1",
+    "dark": false,
+    "avatar": "https://www.svgrepo.com/show/306500/openai.svg",
+    "name": "LLMs & SLMs",
+    "role": "Generative AI"
+  },
+  {
+    "id": 23,
+    "delay": "d2",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
+    "name": "PyTorch",
+    "role": "Deep Learning"
+  },
+  {
+    "id": 24,
+    "delay": "d3",
+    "dark": false,
+    "avatar": "https://avatars.githubusercontent.com/u/170677839?s=200&v=4",
+    "name": "MCP",
+    "role": "AI Integrations"
+  },
+  {
+    "id": 25,
+    "delay": "d1",
+    "dark": true,
+    "avatar": "https://avatars.githubusercontent.com/u/170677839?s=200&v=4",
+    "name": "AI Agents",
+    "role": "Agentic AI"
+  },
+  {
+    "id": 26,
+    "delay": "d2",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg",
+    "name": "Prompt Engineering",
+    "role": "Generative AI"
+  },
+
+  {
+    "id": 27,
+    "delay": "d1",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    "name": "MongoDB",
+    "role": "Databases"
+  },
+  {
+    "id": 28,
+    "delay": "d2",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    "name": "MySQL",
+    "role": "Databases"
+  },
+
+  {
+    "id": 29,
+    "delay": "d1",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    "name": "Git",
+    "role": "Developer Tools"
+  },
+  {
+    "id": 30,
+    "delay": "d2",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    "name": "GitHub",
+    "role": "Developer Tools"
+  },
+  {
+    "id": 31,
+    "delay": "d3",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    "name": "Docker",
+    "role": "DevOps & Deployment"
+  },
+  {
+    "id": 32,
+    "delay": "d1",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    "name": "Google Colab",
+    "role": "AI Development Tools"
+  },
+  {
+    "id": 33,
+    "delay": "d2",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+    "name": "VS Code",
+    "role": "Developer Tools"
+  },
+
+  {
+    "id": 34,
+    "delay": "d1",
+    "dark": false,
+    "avatar": "https://n8n.io/favicon.ico",
+    "name": "n8n",
+    "role": "Workflow Automation"
+  },
+  {
+    "id": 35,
+    "delay": "d2",
+    "dark": true,
+    "avatar": "https://avatars.githubusercontent.com/u/170677839?s=200&v=4",
+    "name": "CrewAI",
+    "role": "AI Agent Frameworks"
+  },
+  {
+    "id": 36,
+    "delay": "d3",
+    "dark": false,
+    "avatar": "https://www.google.com/favicon.ico",
+    "name": "Google ADK",
+    "role": "AI Agent Development"
+  },
+
+  {
+    "id": 37,
+    "delay": "d1",
+    "dark": true,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg",
+    "name": "Web Scraping",
+    "role": "Data Engineering"
+  },
+  {
+    "id": 38,
+    "delay": "d2",
+    "dark": false,
+    "avatar": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    "name": "Intelligent Automation",
+    "role": "AI Engineering"
+  },
+  {
+    "id": 39,
+    "delay": "d3",
+    "dark": true,
+    "avatar": "https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg",
+    "name": "Space Technology",
+    "role": "Specialized Interests"
+  }
+]
