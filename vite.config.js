@@ -46,7 +46,10 @@ function seoFilesPlugin(siteUrl) {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const siteUrl = (env.VITE_SITE_URL || '').trim().replace(/^["']+|["']+$/g, '').replace(/\/+$/, '')
+  const siteUrl = (env.VITE_SITE_URL || '')
+    .trim()
+    .replace(/^["']+|["']+$/g, '')
+    .replace(/\/+$/, '')
 
   return {
     plugins: [react(), siteUrlPlugin(siteUrl), seoFilesPlugin(siteUrl)],
