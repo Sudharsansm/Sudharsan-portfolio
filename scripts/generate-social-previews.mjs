@@ -50,19 +50,35 @@ function readDotEnvVar(name) {
   return match ? match[1].trim() : ''
 }
 
-// Same resolution rule vite.config.js uses for the base index.html: without a known public
-// origin, absolute og:image/og:url/canonical tags can't be built, so skip instead of shipping
-// broken ones.
-const siteUrl = (process.env.VITE_SITE_URL || readDotEnvVar('VITE_SITE_URL') || '')
+// Without a known public origin, absolute og:image/og:url/canonical tags can't be built.
+// Checked in order: an explicit VITE_SITE_URL (set by hand, or read from .env locally) wins
+// if present; otherwise fall back to the URL the hosting platform hands the build for free —
+// Netlify sets URL (and DEPLOY_PRIME_URL for branch/preview deploys) on every build with zero
+// configuration, and Vercel sets VERCEL_URL (bare domain, no scheme) the same way. This is
+// what makes the fix self-configuring: forgetting to set VITE_SITE_URL in the dashboard no
+// longer means every page silently keeps the one default image.
+const vercelUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ''
+const siteUrl = (
+  process.env.VITE_SITE_URL ||
+  readDotEnvVar('VITE_SITE_URL') ||
+  process.env.URL ||
+  process.env.DEPLOY_PRIME_URL ||
+  vercelUrl ||
+  ''
+)
   .trim()
   .replace(/^["']+|["']+$/g, '')
   .replace(/\/+$/, '')
 
 if (!siteUrl) {
-  console.warn(
-    '[social-previews] VITE_SITE_URL is not set — skipping per-page previews (Open Graph tags must be absolute URLs).'
+  // A previous version of this script warned and exited 0 here — the build then reported
+  // success while quietly generating none of the per-page previews, which is exactly the
+  // "I redeployed and nothing changed" trap. Fail loudly instead: a red build is impossible
+  // to miss, a green one that silently did nothing isn't.
+  console.error(
+    "[social-previews] No site URL found (checked VITE_SITE_URL, .env, and the host's URL/DEPLOY_PRIME_URL/VERCEL_URL) — failing the build instead of deploying with no per-page previews. Set VITE_SITE_URL in your host's environment variables."
   )
-  process.exit(0)
+  process.exit(1)
 }
 
 // Pull shortName/description/ogImage straight from the source of truth instead of

@@ -45,8 +45,18 @@ function seoFilesPlugin(siteUrl) {
 }
 
 export default defineConfig(({ mode }) => {
+  // prefix '' makes loadEnv merge in every process.env var too (not just VITE_-prefixed ones),
+  // so env.URL/env.DEPLOY_PRIME_URL/env.VERCEL_URL below see whatever the host set, with no
+  // .env file involved.
   const env = loadEnv(mode, process.cwd(), '')
-  const siteUrl = (env.VITE_SITE_URL || '')
+  // An explicit VITE_SITE_URL always wins. Otherwise fall back to what the hosting platform
+  // hands the build automatically, with zero configuration: Netlify sets URL (and
+  // DEPLOY_PRIME_URL for branch/preview deploys), Vercel sets VERCEL_URL (bare domain, no
+  // scheme). Without this fallback, forgetting to set VITE_SITE_URL by hand silently strips
+  // og:url/og:image/canonical from every page's HTML at build time — this is what makes the
+  // fix work out of the box instead of depending on a dashboard setting that's easy to miss.
+  const vercelUrl = env.VERCEL_URL ? `https://${env.VERCEL_URL}` : ''
+  const siteUrl = (env.VITE_SITE_URL || env.URL || env.DEPLOY_PRIME_URL || vercelUrl || '')
     .trim()
     .replace(/^["']+|["']+$/g, '')
     .replace(/\/+$/, '')
