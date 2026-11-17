@@ -640,13 +640,7 @@
       "title": "Bitsopay",
       "category": "developer-tool",
       "categoryLabel": "Developer Tool",
-      "tags": [
-        "FinTech",
-        "UPI Payments",
-        "QR Code Generation",
-        "Payment Links",
-        "Web Development"
-      ],
+      "tags": ["FinTech", "UPI Payments", "QR Code Generation", "Payment Links", "Web Development"],
       "year": "2026",
       "desc": "A modern UPI payment application that simplifies digital transactions through dynamic QR code generation, secure payment links, and payment management.",
       "img": "/images/bitsopay.png",
@@ -766,6 +760,5 @@
         ]
       }
     }
-
   ]
 }
