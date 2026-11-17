@@ -873,14 +873,14 @@
       "id": 6,
       "slug": "how-bitsopay-simplifies-upi-payments-with-qr-codes-and-payment-links",
       "featured": true,
-      "img": "/images/bitsopay-promo.webp",
+      "img": "/images/bitsopay.png",
       "tag": "FinTech & Technology",
       "date": "Nov 17, 2026",
       "readTime": "7 min read",
       "title": "How Bitsopay simplifies UPI payments with QR codes and payment links",
       "desc": "Digital payments are becoming part of everyday life. Bitsopay explores a simpler approach to collecting payments through dynamic UPI QR codes, shareable payment links, and merchant-controlled payment management — without relying on a traditional payment gateway.",
       "body": {
-        "heroImg": "/images/bitsopay-promo.webp",
+        "heroImg": "/images/bitsopay.png",
         "blocks": [
           {
             "type": "heading",

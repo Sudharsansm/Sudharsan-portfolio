@@ -649,13 +649,13 @@
       ],
       "year": "2026",
       "desc": "A modern UPI payment application that simplifies digital transactions through dynamic QR code generation, secure payment links, and payment management.",
-      "img": "/images/bitsopay.webp",
+      "img": "/images/bitsopay.png",
       "liveUrl": "https://bitsopay.vercel.app/",
       "githubUrl": "https://github.com/Sudharsansm/bitsopay",
       "featured": true,
       "caseStudy": {
         "duration": "2026",
-        "heroImg": "/images/bitsopay.webp",
+        "heroImg": "/images/bitsopay.png",
         "meta": {
           "client": "Independent project",
           "role": "Full-Stack Developer",
