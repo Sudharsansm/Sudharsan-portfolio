@@ -4,17 +4,31 @@
 // Slack, Discord, iMessage...) fetch the raw HTML and do NOT run JavaScript, so every shared
 // link — every project, every blog post — showed the same fallback og:image forever.
 //
-// Fix: emit a real dist/projects/<slug>/index.html and dist/blog/<slug>/index.html for every
-// entry in src/data/projects.json and src/data/blog.json, each a copy of the built index.html
-// with that item's own title/description/image baked into the static tags. Both Netlify
-// (public/_redirects, unforced "/* /index.html 200") and Vercel (vercel.json rewrites) only
-// apply their SPA catch-all when no real file matches the request path first — so a crawler
-// hitting /projects/<slug> gets this file with the right image, while a browser gets the same
-// file too, mounts the same React app into #root, and client-side routing takes over exactly
-// as before. Nothing about the app's behavior for real visitors changes.
+// Fix, part 1: emit a real dist/projects/<slug>/index.html and dist/blog/<slug>/index.html
+// for every entry in src/data/projects.json and src/data/blog.json, each a copy of the built
+// index.html with that item's own title/description/image baked into the static tags. Both
+// Netlify (public/_redirects, unforced "/* /index.html 200") and Vercel (vercel.json
+// rewrites) only apply their SPA catch-all when no real file matches the request path first —
+// so a crawler hitting /projects/<slug> gets this file with the right image, while a browser
+// gets the same file too, mounts the same React app into #root, and client-side routing takes
+// over exactly as before. Nothing about the app's behavior for real visitors changes.
+//
+// Fix, part 2: the homepage's "big image" preview isn't just about having an og:image — it's
+// that og-image.jpg is exactly 1200x630 (the ~1.91:1 ratio WhatsApp/Telegram/Facebook expect
+// for the large banner-style card). The real project/post images are all different shapes
+// (1200x800, a square 800x800, 1672x941...), so even with the right file and correct
+// width/height tags, several platforms fall back to a small square thumbnail instead of the
+// big banner. So for every item this script renders its own image onto a 1200x630 canvas
+// (cropping to fill, same way a phone wallpaper picker crops a photo) and uses THAT as the
+// og:image/twitter:image — never the raw source file. Every shared link now gets the same big
+// card shape as the homepage, just with that item's own picture in it.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import sharp from 'sharp'
+
+const OG_WIDTH = 1200
+const OG_HEIGHT = 630
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)))
 const distDir = join(root, 'dist')
@@ -70,71 +84,46 @@ const escapeHtml = (value = '') =>
 
 const absoluteUrl = (path) => (!path ? '' : path.startsWith('http') ? path : `${siteUrl}${path}`)
 
-// The base index.html hardcodes og:image:width=1200 / og:image:height=630 because that
-// matches og-image.jpg exactly. Copying those same numbers onto every project/blog page was
-// wrong: inbits-promo.webp is 1200x800, swify.webp is a square 800x800, bitsopay.png is
-// 1672x941 — telling Facebook/LinkedIn/WhatsApp "this is 1200x630" when it's actually a
-// different shape makes them crop it badly or refuse to render it at all. Read each file's
-// real header instead of trusting a borrowed number. No image library needed — PNG/JPEG/WEBP
-// all store their dimensions in a few fixed bytes near the start of the file.
-function getImageSize(buffer) {
-  // PNG: 8-byte signature + 4-byte chunk length + "IHDR", then width/height as big-endian u32.
-  if (buffer.length >= 24 && buffer.toString('ascii', 1, 4) === 'PNG') {
-    return { width: buffer.readUInt32BE(16), height: buffer.readUInt32BE(20) }
-  }
-  // JPEG: walk the marker segments until an SOF marker (frame header) is found.
-  if (buffer[0] === 0xff && buffer[1] === 0xd8) {
-    let offset = 2
-    while (offset + 9 < buffer.length && buffer[offset] === 0xff) {
-      const marker = buffer[offset + 1]
-      if (marker === 0xd8 || marker === 0xd9) {
-        offset += 2
-        continue
-      }
-      const length = buffer.readUInt16BE(offset + 2)
-      const isSOF = marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc
-      if (isSOF) {
-        return { height: buffer.readUInt16BE(offset + 5), width: buffer.readUInt16BE(offset + 7) }
-      }
-      offset += 2 + length
-    }
-  }
-  // WEBP: RIFF container; the three sub-formats (lossy/lossless/extended) each pack
-  // width/height differently right after the "VP8 "/"VP8L"/"VP8X" fourCC.
-  if (buffer.toString('ascii', 0, 4) === 'RIFF' && buffer.toString('ascii', 8, 12) === 'WEBP') {
-    const format = buffer.toString('ascii', 12, 16)
-    if (format === 'VP8 ') {
-      return { width: buffer.readUInt16LE(26) & 0x3fff, height: buffer.readUInt16LE(28) & 0x3fff }
-    }
-    if (format === 'VP8L') {
-      const bits = buffer.readUInt32LE(21)
-      return { width: (bits & 0x3fff) + 1, height: ((bits >> 14) & 0x3fff) + 1 }
-    }
-    if (format === 'VP8X') {
-      return { width: 1 + buffer.readUIntLE(24, 3), height: 1 + buffer.readUIntLE(27, 3) }
-    }
-  }
-  return null
-}
+// One 1200x630 JPEG per distinct source image, written to dist/og/<name>.jpg. `fit: 'cover'`
+// scales the source up or down and crops it so it completely fills the 1200x630 frame (never
+// letterboxed/squashed); `position: 'attention'` has sharp pick the crop that keeps the most
+// visually interesting region instead of blindly cropping from the centre. Remote images
+// (e.g. an Unsplash placeholder) are downloaded first — this needs outbound network access at
+// build time, which Netlify/Vercel's build servers have; if a particular build environment
+// doesn't, this just warns and that one item keeps its original image/tags instead of failing
+// the whole build.
+const ogDir = join(distDir, 'og')
+mkdirSync(ogDir, { recursive: true })
+const ogCache = new Map()
 
-// Local images (anything not already an absolute http(s) URL) live in dist/ after the Vite
-// build copies public/ over, so their real dimensions can be read straight off disk — no
-// network call needed. Remote images (e.g. an Unsplash URL used as a placeholder) can't be
-// measured without fetching them, so their width/height tags are simply omitted; crawlers
-// measure the image themselves when no hint is given, which is normal and safe.
-const sizeCache = new Map()
-function measureLocalImage(path) {
-  if (!path || path.startsWith('http')) return null
-  if (sizeCache.has(path)) return sizeCache.get(path)
-  let size = null
+async function buildOgImage(resolvedImage, outName) {
+  if (ogCache.has(resolvedImage)) return ogCache.get(resolvedImage)
+
+  let result = null
   try {
-    const filePath = join(distDir, path.replace(/^\//, ''))
-    size = getImageSize(readFileSync(filePath))
-  } catch {
-    size = null
+    const inputBuffer = resolvedImage.startsWith('http')
+      ? await fetch(resolvedImage)
+          .then((res) => {
+            if (!res.ok) throw new Error(`HTTP ${res.status}`)
+            return res.arrayBuffer()
+          })
+          .then(Buffer.from)
+      : readFileSync(join(distDir, resolvedImage.replace(/^\//, '')))
+
+    const outputBuffer = await sharp(inputBuffer)
+      .resize(OG_WIDTH, OG_HEIGHT, { fit: 'cover', position: 'attention' })
+      .jpeg({ quality: 85 })
+      .toBuffer()
+
+    const fileName = `${outName}.jpg`
+    writeFileSync(join(ogDir, fileName), outputBuffer)
+    result = { url: `/og/${fileName}`, width: OG_WIDTH, height: OG_HEIGHT }
+  } catch (err) {
+    console.warn(`[social-previews] Couldn't build a 1200x630 preview for ${resolvedImage}: ${err.message}`)
   }
-  sizeCache.set(path, size)
-  return size
+
+  ogCache.set(resolvedImage, result)
+  return result
 }
 
 // tagPattern matches the whole <meta ...> / <link ...> tag by a unique attribute inside it;
@@ -150,13 +139,13 @@ function removeTag(html, tagPattern) {
   return html.replace(tagPattern, '')
 }
 
-function renderPage({ title, description, image, path }) {
+async function renderPage({ title, description, image, path, ogName }) {
   const fullTitle = `${title} | ${shortName}`
   const desc = description || defaultDescription
   const url = `${siteUrl}${path}`
   const resolvedImage = image || defaultOgImage
-  const img = absoluteUrl(resolvedImage)
-  const size = measureLocalImage(resolvedImage)
+  const built = await buildOgImage(resolvedImage, ogName)
+  const img = built ? absoluteUrl(built.url) : absoluteUrl(resolvedImage)
 
   let html = template
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(fullTitle)}</title>`)
@@ -169,12 +158,15 @@ function renderPage({ title, description, image, path }) {
   html = setContent(html, /<meta[^>]*name="twitter:description"[^>]*>/, desc)
   html = setContent(html, /<meta[^>]*name="twitter:image"[^>]*>/, img)
   html = setHref(html, /<link[^>]*rel="canonical"[^>]*>/, url)
-  if (size) {
-    html = setContent(html, /<meta[^>]*property="og:image:width"[^>]*>/, String(size.width))
-    html = setContent(html, /<meta[^>]*property="og:image:height"[^>]*>/, String(size.height))
+  if (built) {
+    // Every generated preview is exactly 1200x630, same as the homepage's og-image.jpg — the
+    // "big image" card shape — so this is always correct, never a guess.
+    html = setContent(html, /<meta[^>]*property="og:image:width"[^>]*>/, String(built.width))
+    html = setContent(html, /<meta[^>]*property="og:image:height"[^>]*>/, String(built.height))
   } else {
-    // Couldn't measure it (remote image, or the file wasn't found) — a wrong hint is worse
-    // than no hint, so drop the tags rather than ship stale 1200x630 numbers.
+    // The image build failed for this one item — a wrong width/height hint is worse than no
+    // hint, so drop the tags rather than ship stale 1200x630 numbers for a differently-shaped
+    // fallback image.
     html = removeTag(html, /\s*<meta[^>]*property="og:image:width"[^>]*>\n?/)
     html = removeTag(html, /\s*<meta[^>]*property="og:image:height"[^>]*>\n?/)
   }
@@ -190,31 +182,52 @@ function writeRoute(path, html) {
 let count = 0
 
 for (const p of projects) {
-  writeRoute(
-    `/projects/${p.slug}`,
-    renderPage({ title: p.title, description: p.desc, image: p.img, path: `/projects/${p.slug}` })
-  )
+  const html = await renderPage({
+    title: p.title,
+    description: p.desc,
+    image: p.img,
+    path: `/projects/${p.slug}`,
+    ogName: `projects-${p.slug}`,
+  })
+  writeRoute(`/projects/${p.slug}`, html)
   count++
 }
 
 for (const post of posts) {
-  writeRoute(
-    `/blog/${post.slug}`,
-    renderPage({ title: post.title, description: post.desc, image: post.img, path: `/blog/${post.slug}` })
-  )
+  const html = await renderPage({
+    title: post.title,
+    description: post.desc,
+    image: post.img,
+    path: `/blog/${post.slug}`,
+    ogName: `blog-${post.slug}`,
+  })
+  writeRoute(`/blog/${post.slug}`, html)
   count++
 }
 
-// The listing pages get their own stable preview too, instead of silently keeping whichever
+// The listing pages get their own stable preview too (the site's default og-image.jpg is
+// already 1200x630, so no cropping is needed there), instead of silently keeping whichever
 // item's tags vite build happened to leave in dist/index.html.
 writeRoute(
   '/projects',
-  renderPage({ title: 'Projects', description: defaultDescription, image: defaultOgImage, path: '/projects' })
+  await renderPage({
+    title: 'Projects',
+    description: defaultDescription,
+    image: defaultOgImage,
+    path: '/projects',
+    ogName: 'projects-index',
+  })
 )
 writeRoute(
   '/blog',
-  renderPage({ title: 'Blog', description: defaultDescription, image: defaultOgImage, path: '/blog' })
+  await renderPage({
+    title: 'Blog',
+    description: defaultDescription,
+    image: defaultOgImage,
+    path: '/blog',
+    ogName: 'blog-index',
+  })
 )
 count += 2
 
-console.log(`[social-previews] Generated ${count} static preview page(s) with per-item og:image tags.`)
+console.log(`[social-previews] Generated ${count} static preview page(s), each with its own 1200x630 og:image.`)
