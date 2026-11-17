@@ -367,7 +367,7 @@
       "img": "/images/dune-fashions.webp",
       "liveUrl": "https://www.dunefashions.in/",
       "githubUrl": "https://github.com/Sudharsansm/DuneFashion_shop",
-      "featured": true,
+      "featured": false,
       "caseStudy": {
         "duration": "2026 · Ongoing",
         "heroImg": "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1400&q=80",
@@ -632,6 +632,140 @@
           "Future improvements can be guided by accessibility checks, responsive testing, and feedback from real users."
         ]
       }
+    },
+
+    {
+      "id": 5,
+      "slug": "bitsopay",
+      "title": "Bitsopay",
+      "category": "developer-tool",
+      "categoryLabel": "Developer Tool",
+      "tags": [
+        "FinTech",
+        "UPI Payments",
+        "QR Code Generation",
+        "Payment Links",
+        "Web Development"
+      ],
+      "year": "2026",
+      "desc": "A modern UPI payment application that simplifies digital transactions through dynamic QR code generation, secure payment links, and payment management.",
+      "img": "/images/bitsopay.webp",
+      "liveUrl": "https://bitsopay.vercel.app/",
+      "githubUrl": "https://github.com/Sudharsansm/bitsopay",
+      "featured": true,
+      "caseStudy": {
+        "duration": "2026",
+        "heroImg": "/images/bitsopay.webp",
+        "meta": {
+          "client": "Independent project",
+          "role": "Full-Stack Developer",
+          "timeline": "2026",
+          "deliverables": "UPI payment application, QR code generation, payment links, and payment management"
+        },
+        "stats": [
+          {
+            "value": "UPI",
+            "label": "Payments",
+            "accent": false
+          },
+          {
+            "value": "Dynamic",
+            "label": "QR Generation",
+            "accent": true
+          },
+          {
+            "value": "Secure",
+            "label": "Payment Links",
+            "accent": false
+          }
+        ],
+        "brief": [
+          "Bitsopay is a modern UPI payment application designed to simplify digital payments for merchants and customers. It enables users to generate payment QR codes and shareable payment links using a UPI ID and payment amount.",
+          "The application focuses on simplifying payment collection, providing a convenient payment experience, and offering payment history and management capabilities."
+        ],
+        "briefQuote": "Simplifying UPI payments through QR codes and secure payment links.",
+        "research": {
+          "interviewsIntro": "The project focuses on making digital payment collection simpler, more accessible, and convenient for merchants and customers.",
+          "interviewFindings": [
+            "QR code payments provide a convenient way for customers to initiate UPI transactions.",
+            "Pre-filled payment amounts reduce manual entry and improve the payment experience.",
+            "Shareable payment links make it easier to request payments remotely.",
+            "Payment history helps merchants organize and track payment records."
+          ],
+          "heuristicAudit": "Key design considerations include a simple payment workflow, clear transaction information, mobile-friendly QR presentation, secure payment links, and accessible payment management."
+        },
+        "strategyIntro": "The application is built around three core principles:",
+        "principles": [
+          {
+            "icon": "M3 3h18v18H3z",
+            "title": "Easy QR Payments",
+            "desc": "Generate UPI payment QR codes with predefined amounts, payment references, and merchant information."
+          },
+          {
+            "icon": "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71",
+            "title": "Shareable Payment Links",
+            "desc": "Create payment links that customers can open and use through supported UPI applications."
+          },
+          {
+            "icon": "M12 8v4l3 3",
+            "title": "Payment Management",
+            "desc": "Organize payment records and manage pending, paid, cancelled, and expired payment requests."
+          }
+        ],
+        "processIntro": {
+          "heading": "Design and development",
+          "body": "Bitsopay was developed with a focus on UPI payment workflows, QR code generation, secure payment link creation, and merchant-side payment management."
+        },
+        "steps": [
+          {
+            "n": 1,
+            "title": "Payment Workflow Design",
+            "desc": "Designed a straightforward payment experience for generating QR codes and creating payment requests using UPI details."
+          },
+          {
+            "n": 2,
+            "title": "QR and Payment Link Development",
+            "desc": "Implemented UPI QR code generation, shareable payment links, payment references, and secure link handling."
+          },
+          {
+            "n": 3,
+            "title": "Payment Management",
+            "desc": "Developed payment record management with status tracking, payment history, and merchant-side operations."
+          },
+          {
+            "n": 4,
+            "title": "Deployment",
+            "desc": "Published the application online using Vercel and made it accessible through a responsive web interface."
+          }
+        ],
+        "decisions": [
+          {
+            "title": "UPI-First Experience",
+            "body": "Focused on India's widely used UPI payment ecosystem instead of introducing an unnecessary third-party payment gateway dependency."
+          },
+          {
+            "title": "Secure Payment Links",
+            "body": "Designed payment links with signed or protected payment information and expiry support to prevent unauthorized modifications."
+          },
+          {
+            "title": "Merchant Control",
+            "body": "Kept payment verification under merchant control, allowing merchants to confirm incoming payments through their own UPI or banking applications before updating records."
+          }
+        ],
+        "resultsIntro": "Bitsopay is available online as a deployed UPI payment application and its supporting Python package.",
+        "results": [
+          "Live website: https://bitsopay.vercel.app/",
+          "GitHub repository: https://github.com/Sudharsansm/bitsopay",
+          "PyPI package: https://pypi.org/project/bitsopay/",
+          "Project focus: UPI QR generation, payment links, and merchant payment management."
+        ],
+        "resultsQuote": "Making digital payment collection simpler with UPI QR codes and payment links.",
+        "reflections": [
+          "This project provided practical experience in payment workflow design, QR code generation, secure link handling, and merchant-side payment management.",
+          "Future improvements can focus on payment reconciliation integrations, enhanced analytics, merchant dashboards, and additional payment management capabilities."
+        ]
+      }
     }
+
   ]
 }
